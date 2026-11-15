@@ -2,6 +2,10 @@
 
 A web-based Student Management System developed to manage student information, courses, attendance, and academic marks through a simple and user-friendly interface.
 
+## Live Demo
+
+https://student-management-system-84bh.onrender.com
+
 ## Features
 
 - Student registration and management
@@ -20,6 +24,8 @@ A web-based Student Management System developed to manage student information, c
 - **Database:** MySQL
 - **Build Tool:** Maven
 - **Version Control:** Git and GitHub
+- **Deployment:** Render
+- **Cloud Database:** TiDB Cloud
 
 ## Project Structure
 
@@ -27,11 +33,12 @@ A web-based Student Management System developed to manage student information, c
 - `src/main/resources/static` – HTML, CSS and JavaScript files
 - `src/main/resources/application.properties` – Application configuration
 - `pom.xml` – Maven dependencies and project configuration
+- `Dockerfile` – Docker deployment configuration
 - `mvnw` – Maven wrapper
 
 ## Installation and Setup
 
-1. Install Java JDK.
+1. Install Java JDK 21.
 2. Install MySQL.
 3. Clone this repository:
 
@@ -52,12 +59,17 @@ Configure these environment variables:
 
 **Important:** Never upload database passwords or other sensitive information to GitHub.
 
+## Deployment
+
+The application is deployed using Render, with TiDB Cloud as the database.
+
+**Live Application:** https://student-management-system-84bh.onrender.com
+
 ## Future Improvements
 
 - User authentication and authorization
 - Advanced student reports
 - Improved dashboard analytics
-- Cloud deployment
 
 ## GitHub Repository
 
