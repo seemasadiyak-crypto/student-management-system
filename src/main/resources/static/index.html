@@ -1,0 +1,402 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>StudentHub - Student Management System</title>
+
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <div class="logo">
+            <h2>Student<span>Hub</span></h2>
+            <p>Management Portal</p>
+        </div>
+
+        <nav>
+            <a href="#dashboard">Dashboard</a>
+            <a href="#analytics">Analytics</a>
+            <a href="#attendance">Attendance</a>
+            <a href="#examinations">Examinations</a>
+            <a href="#results">Results</a>
+            <a href="#addStudent">Add Student</a>
+            <a href="#studentRecords">Student Records</a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <p>Student Management System</p>
+        </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+
+        <!-- HEADER -->
+        <header class="top-header">
+            <div>
+                <h1>Student Dashboard</h1>
+                <p>Welcome back! Manage your students efficiently.</p>
+            </div>
+
+            <div class="admin-profile">
+                <span>Admin</span>
+            </div>
+        </header>
+
+        <!-- DASHBOARD -->
+        <section id="dashboard" class="section">
+
+            <div class="section-heading">
+                <h2>Dashboard Overview</h2>
+                <p>Quick summary of student information</p>
+            </div>
+
+            <div class="dashboard-cards">
+
+                <div class="dashboard-card">
+                    <h3>Total Students</h3>
+                    <h2 id="totalStudents">0</h2>
+                    <p>Registered Students</p>
+                </div>
+
+                <div class="dashboard-card">
+                    <h3>Total Courses</h3>
+                    <h2 id="totalCourses">0</h2>
+                    <p>Available Courses</p>
+                </div>
+
+                <div class="dashboard-card">
+                    <h3>Application Status</h3>
+                    <h2 id="applicationStatus">Checking...</h2>
+                    <p id="systemStatus">Checking backend connection...</p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ANALYTICS -->
+        <section id="analytics" class="section">
+
+            <div class="section-heading">
+                <h2>Student Analytics</h2>
+                <p>Visual overview of student enrollment</p>
+            </div>
+
+            <div class="content-card">
+                <h3>Course-wise Student Distribution</h3>
+                <canvas id="courseChart"></canvas>
+            </div>
+
+        </section>
+
+        <!-- ATTENDANCE -->
+        <section id="attendance" class="section">
+
+            <div class="section-heading">
+                <h2>Attendance Management</h2>
+                <p>Manage and monitor daily student attendance</p>
+            </div>
+
+            <div class="content-card">
+
+                <div class="form-group">
+                    <label for="attendanceDate">Select Date:</label>
+                    <input type="date" id="attendanceDate">
+                </div>
+
+                <div class="dashboard-cards">
+
+                    <div class="dashboard-card">
+                        <h3>Present</h3>
+                        <h2 id="presentCount">0</h2>
+                    </div>
+
+                    <div class="dashboard-card">
+                        <h3>Absent</h3>
+                        <h2 id="absentCount">0</h2>
+                    </div>
+
+                    <div class="dashboard-card">
+                        <h3>Attendance</h3>
+                        <h2 id="attendancePercentage">0%</h2>
+                    </div>
+
+                </div>
+
+                <h3>Mark Student Attendance</h3>
+
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Student Name</th>
+                                <th>Course</th>
+                                <th>Attendance</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="attendanceList">
+                            <tr>
+                                <td colspan="3">Loading attendance...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <button type="button" id="saveAttendance">
+                    Save Attendance
+                </button>
+
+            </div>
+        </section>
+
+        <!-- EXAMINATIONS -->
+        <section id="examinations" class="section">
+
+            <div class="section-heading">
+                <h2>Examination & Results</h2>
+                <p>Manage examination marks and student performance</p>
+            </div>
+
+            <div class="dashboard-cards">
+
+                <div class="dashboard-card">
+                    <h3>Total Exams</h3>
+                    <h2 id="totalExams">0</h2>
+                </div>
+
+                <div class="dashboard-card">
+                    <h3>Average Marks</h3>
+                    <h2 id="averageMarks">0</h2>
+                </div>
+
+                <div class="dashboard-card">
+                    <h3>Pass Percentage</h3>
+                    <h2 id="passPercentage">0%</h2>
+                </div>
+
+            </div>
+
+            <div class="content-card">
+                <h3>Student Performance Overview</h3>
+                <canvas id="marksChart"></canvas>
+            </div>
+
+            <!-- MARKS FORM -->
+            <div class="content-card">
+
+                <h3>Enter Examination Marks</h3>
+
+                <form id="marksForm">
+
+                    <div class="form-group">
+                        <label for="marksStudentId">Student ID</label>
+                        <input
+                            type="number"
+                            id="marksStudentId"
+                            required
+                            placeholder="Enter Student ID">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input
+                            type="text"
+                            id="subject"
+                            required
+                            placeholder="Enter Subject">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="marksObtained">Marks Obtained</label>
+                        <input
+                            type="number"
+                            id="marksObtained"
+                            required
+                            min="0"
+                            placeholder="Enter Marks">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="maxMarks">Maximum Marks</label>
+                        <input
+                            type="number"
+                            id="maxMarks"
+                            required
+                            min="1"
+                            placeholder="Enter Maximum Marks">
+                    </div>
+
+                    <button type="submit">Save Marks</button>
+
+                </form>
+
+            </div>
+
+        </section>
+
+        <!-- RESULTS -->
+        <section id="results" class="section">
+
+            <div class="section-heading">
+                <h2>Student Result Report</h2>
+                <p>View and manage examination results</p>
+            </div>
+
+            <div class="content-card">
+
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Student ID</th>
+                                <th>Student Name</th>
+                                <th>Subject</th>
+                                <th>Marks Obtained</th>
+                                <th>Maximum Marks</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="marksList">
+                            <tr>
+                                <td colspan="6">No result records available.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- ADD STUDENT -->
+        <section id="addStudent" class="section">
+
+            <div class="section-heading">
+                <h2>Add New Student</h2>
+                <p>Register a new student in the system</p>
+            </div>
+
+            <div class="content-card">
+
+                <form id="studentForm">
+
+                    <div class="form-group">
+                        <label for="studentName">Student Name</label>
+                        <input
+                            type="text"
+                            id="studentName"
+                            required
+                            placeholder="Enter Student Name">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="studentEmail">Email Address</label>
+                        <input
+                            type="email"
+                            id="studentEmail"
+                            required
+                            placeholder="Enter Email Address">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="studentCourse">Select Course</label>
+                        <select id="studentCourse" required>
+                            <option value="">Select Course</option>
+                            <option value="Java">Java</option>
+                            <option value="Python">Python</option>
+                            <option value="Web Development">Web Development</option>
+                            <option value="Data Science">Data Science</option>
+                            <option value="C Programming">C Programming</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="studentPhoto">Student Photo</label>
+                        <input
+                            type="file"
+                            id="studentPhoto"
+                            accept="image/*">
+                    </div>
+
+                    <button type="submit">Register Student</button>
+
+                </form>
+
+            </div>
+
+        </section>
+
+        <!-- STUDENT RECORDS -->
+        <section id="studentRecords" class="section">
+
+            <div class="section-heading">
+                <h2>Student Records</h2>
+                <p>View, search and manage registered students</p>
+            </div>
+
+            <div class="content-card">
+
+                <div class="records-toolbar">
+
+                    <input
+                        type="text"
+                        id="searchInput"
+                        placeholder="Search students...">
+
+                    <select id="courseFilter">
+                        <option value="">All Courses</option>
+                        <option value="Java">Java</option>
+                        <option value="Python">Python</option>
+                        <option value="Web Development">Web Development</option>
+                        <option value="Data Science">Data Science</option>
+                        <option value="C Programming">C Programming</option>
+                    </select>
+
+                </div>
+
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Photo</th>
+                                <th>Student Name</th>
+                                <th>Email</th>
+                                <th>Course</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="studentList">
+                            <tr>
+                                <td colspan="5">Loading student records...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div id="pagination"></div>
+
+            </div>
+
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="footer">
+            <p>© 2026 Student Management System. All Rights Reserved.</p>
+        </footer>
+
+    </main>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
