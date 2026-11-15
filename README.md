@@ -1,3 +1,4 @@
+
 # Student Management System
 
 A web-based Student Management System developed to manage student information, courses, attendance, and academic marks through a simple and user-friendly interface.
@@ -21,11 +22,33 @@ https://student-management-system-84bh.onrender.com
 
 - **Frontend:** HTML, CSS, JavaScript
 - **Backend:** Java, Spring Boot
-- **Database:** MySQL
+- **Database:** TiDB Cloud (MySQL compatible)
 - **Build Tool:** Maven
 - **Version Control:** Git and GitHub
 - **Deployment:** Render
-- **Cloud Database:** TiDB Cloud
+
+## Project Screenshots
+
+### 1. Student Dashboard
+![Student Dashboard](Student%20Dashboard.png)
+
+### 2. Student Analytics
+![Student Analytics](Student%20Analytics.png)
+
+### 3. Student Records
+![Student Records](Student%20Records.png)
+
+### 4. Attendance Management
+![Attendance Management](Attendance%20Management.png)
+
+### 5. Enter Examination Marks
+![Enter Examination Marks](Enter%20Examination%20Marks.png)
+
+### 6. Examination and Results
+![Examination and Results](Examination%20%26%20Results.png)
+
+### 7. Add New Student
+![Add New Student](Add%20New%20Student.png)
 
 ## Project Structure
 
@@ -39,13 +62,13 @@ https://student-management-system-84bh.onrender.com
 ## Installation and Setup
 
 1. Install Java JDK 21.
-2. Install MySQL.
+2. Set up a MySQL-compatible database.
 3. Clone this repository:
 
    `git clone https://github.com/seemasadiyak-crypto/student-management-system.git`
 
 4. Open the project in VS Code or IntelliJ IDEA.
-5. Create a MySQL database named `student_management`.
+5. Create a database named `student_management`.
 6. Configure the database environment variables.
 7. Run the Spring Boot application.
 
@@ -61,7 +84,7 @@ Configure these environment variables:
 
 ## Deployment
 
-The application is deployed using Render, with TiDB Cloud as the database.
+The application is deployed using Render with TiDB Cloud as the database.
 
 **Live Application:** https://student-management-system-84bh.onrender.com
 
@@ -73,7 +96,7 @@ The application is deployed using Render, with TiDB Cloud as the database.
 
 ## GitHub Repository
 
-[Student Management System](https://github.com/seemasadiyak-crypto/student-management-system)
+https://github.com/seemasadiyak-crypto/student-management-system
 
 ## Developer
 
